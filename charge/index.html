@@ -18,9 +18,9 @@
     <br>
     <br>
     <br>
-    <p>日期:</p><input class="cen-ter form-control" type="date" />
+    <p>日期:</p><input class="cen-ter form-control" id="date" type="date" />
     <br>
-    <p>金錢:</p><input class="cen-ter form-control" type="number" />
+    <p>金錢:</p><input class="cen-ter form-control" id="amount" type="number" />
     <br>
     <p>類別:</p>
     	<select id="category" class="form-control" name="category">
@@ -32,11 +32,35 @@
         <option value="其他">其他</option>
       </select>
     <br>
-    <p>項目:</p><input class="cen-ter form-control" placeholder="便當"/>
+    <p>項目:</p><input class="cen-ter form-control" id="name" placeholder="便當"/>
     <br>
     <br>
     <br>
     <br>
-    <button class="cen-ter btn btn-primary">submit</button>
+    <button id="submit" class="cen-ter btn btn-primary">submit</button>
+    
+    
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("DB");
+      var expensesCollection = db.collection("expenses");
+      expensesCollection.load();
+      $("#submit").on("click",function(){
+        expensesCollection.insert({
+          date:$("#date").val(),
+          category:$("#category").val(),
+          name:$("#name").val(),
+          amount:$("#amount").val()/1 // 將字串轉為數字
+        });
+        expensesCollection.save();
+        alert("儲存成功！");
+        date:$("#date").val("");
+        categoryId:$("#category").val("");
+        name:$("#name").val("");
+        amount:$("#amount").val("");
+      });
+
+    </script>
+    
   </body>
 </html>
