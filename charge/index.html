@@ -1,12 +1,13 @@
 <html>
   <head>
     <title>記帳</title>
-    <link rel="stylesheet" href="css/boostrap.css">
-    <script src="js/main.js"> </script>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-   	<script src="js/jquery.js"> </script>
-   	<script src="js/bootstrap.js"> </script>
-	  <script src="js/fdb.js"> </script>
+    <meta name="veiwport" content="width=device-width , initial-scale=1 , maximum-scale=1">
+    <link rel="stylesheet" href="../css/boostrap.css">
+    <script src="../js/main.js"> </script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+   	<script src="../js/jquery.js"> </script>
+   	<script src="../js/bootstrap.js"> </script>
+	  <script src="../js/fdb.js"> </script>
   </head>
   
   <body>
@@ -17,12 +18,25 @@
     <br>
     <br>
     <br>
-    <p class="cen-ter">時間:</p><input class="cen-ter" type="date" />
+    <p class="cen-ter form-control">日期:</p><input class="cen-ter" type="date" />
     <br>
-    <p class="cen-ter">金錢:</p><input class="cen-ter" type="number" />
+    <p class="cen-ter form-control">金錢:</p><input class="cen-ter" type="number" />
     <br>
-    <p class="cen-ter">項目:</p><input class="cen-ter" />
+    <p class="cen-ter form-control">類別:</p>
+    	<select id="category" class="form-control" name="category">
+    		<option value="餐飲">餐飲</option>
+        <option value="衣物">衣物</option>
+        <option value="居住">居住</option>
+        <option value="交通">交通</option>
+        <option value="娛樂">娛樂</option>
+        <option value="其他">其他</option>
+      </select>
     <br>
-    <p class="cen-ter">類別:</p><input class="cen-ter" />
+    <p class="cen-ter form-control">項目:</p><input class="cen-ter" placeholder="便當"/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="cen-ter btn btn-primary">submit</button>
   </body>
 </html>
