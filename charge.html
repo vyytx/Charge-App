@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>記帳</title>
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <link rel="stylesheet" href="css/boostrap.css">
+    <script src="js/main.js"> </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+   	<script src="js/jquery.js"> </script>
+   	<script src="js/bootstrap.js"> </script>
+	  <script src="js/fdb.js"> </script>
+  </head>
+  
+  <body>
+    <br>
+    <br>
+    <h1 class="cen-ter">記帳</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p>日期:</p><input class="cen-ter form-control" id="date" type="date" />
+    <br>
+    <p>金錢:</p><input class="cen-ter form-control" id="amount" type="number" />
+    <br>
+    <p>類別:</p>
+    	<select id="category" class="form-control" name="category">
+    		<option></option>
+    		<option value="餐飲">餐飲</option>
+        <option value="衣物">衣物</option>
+        <option value="居住">居住</option>
+        <option value="交通">交通</option>
+        <option value="娛樂">娛樂</option>
+        <option value="其他">其他</option>
+      </select>
+    <br>
+    <p>項目:</p><input class="cen-ter form-control" id="name" placeholder="便當"/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="submit" class="cen-ter btn btn-primary">submit</button>
+    
+    
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("DB");
+      var expensesCollection = db.collection("expenses");
+      expensesCollection.load();
+      $("#submit").on("click",function(){
+        expensesCollection.insert({
+          date:$("#date").val(),
+          category:$("#category").val(),
+          name:$("#name").val(),
+          amount:$("#amount").val()/1 // 將字串轉為數字
+        });
+        expensesCollection.save();
+        alert("儲存成功！");
+        date:$("#date").val("");
+        categoryId:$("#category").val("");
+        name:$("#name").val("");
+        amount:$("#amount").val("");
+      });
+
+    </script>
+    
+  </body>
+</html>
