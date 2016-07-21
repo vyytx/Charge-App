@@ -18,3 +18,91 @@
     <br>
     <br>
     <br>
+    <input type="radio" name="mode" value="thisMonth" /> 本月份
+    <br>
+    <input type="radio" name="mode" value="period" /> 指定期間
+    <br>
+    <input id="from" class="input-field" type="date"> ~ <input id="to" class="input-field" type="date">
+    <button id="submit" class="btn btn-primary btn-block">查詢</button>
+    <hr>
+      
+    <table id=type class="table">
+      <thead>
+        <tr>
+          <th>類別</th>
+          <th>金額</th>
+          <th>比例</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+        
+    <table id="details" class="table">
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>項目</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table> 
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("DB");
+      var expensesCollection = db.collection("expenses");
+      expensesCollection.load();
+      $("#submit").on("click",function(){
+        var searchMode = $("input[name='mode']:checked").val();
+        var from="", to="";
+        if (searchMode=='thisMonth') {
+          var date = new Date();
+          var year = date.getUTCFullYear();
+          var month = date.getUTCMonth()+1; // gteMonth 的結果會是實際月份-1
+          if(month<=9){
+            month = "0"+month;
+          }
+          from = year+"-"+month+"-"+"01";
+          to = year+"-"+month+"-"+"31";
+        } else if(searchMode=='period'){
+          from = $("#from").val();
+          to = $("#to").val();
+        }
+        
+        var expenses = expensesCollection.find(
+          {
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          }
+        );
+        
+        var type={
+          1: {name:"餐飲",amount:0},
+          2: {name:"交通",amount:0},
+          3: {name:"娛樂",amount:0},
+          4: {name:"生活開銷",amount:0}
+        };
+        var total = 0;
+        
+        $("#details tbody").html("");
+        $("type tbody").html("");
+        for(var i=0;i<expenses.length; i++){
+          $("#details tbody").append("<tr><td>"+expenses[i].date+"</td><td>"+expenses[i].name+"</td><td>"+expenses[i].amount+"</td></tr>");
+        type[expenses[i].categoryId].amount += expenses[i].amount/1;
+          total += expenses[i].amount/1;
+        }
+        for(key intype){
+          var elem =type[key];
+          $("type").append("<tr><td>"+elem.name+"</td><td>"+elem.amount+"</td><td>"+Math.round(elem.amount/total*100)+"%"+"</td></tr>");
+        }
+        $("type").append("<tr><td colspan='3'>總計: "+total+"</td></tr>");
+      });
+      
+    </script>
+  </body>
