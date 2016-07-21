@@ -12,3 +12,7 @@ h1{
 p{
   color: white;
 }
+.input-field {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
