@@ -13,16 +13,16 @@
   <body>
     <br>
     <br>
-    <h1 class="cen-ter">記帳</h1>
+    <h1 class="cen-ter">查詢特定時間內的帳</h1>
     <br>
     <br>
     <br>
     <br>
     <input type="radio" name="mode" value="thisMonth" /> <text class="textWhite">本月份</text>
     <br>
-    <input type="radio" name="mode" value="period" /> 指定期間
+    <input type="radio" name="mode" value="period" /> <text class="textWhite">指定期間</text>
     <br>
-    <input id="from" class="input-field" type="date"> ~ <input id="to" class="input-field" type="date">
+    <input id="from" class="input-field" type="date"> <text class="textWhite">~</text> <input id="to" class="input-field" type="date">
     <button id="submit" class="btn btn-primary cen-ter">查詢</button>
     <hr>
       
@@ -41,9 +41,9 @@
     <table id="details" class="table">
       <thead>
         <tr>
-          <th>日期</th>
-          <th>項目</th>
-          <th>金額</th>
+          <th class="textWhite">日期</th>
+          <th class="textWhite">項目</th>
+          <th class="textWhite">金額</th>
         </tr>
       </thead>
       <tbody>
