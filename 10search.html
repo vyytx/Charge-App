@@ -40,6 +40,7 @@
       var expensesCollection = db.collection("expenses");
       expensesCollection.load();
       var search10 = expensesCollection.find(
+        {},
         {$limit: 10,$OrderBy:{date:-1}}
       );
       
