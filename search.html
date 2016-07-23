@@ -46,10 +46,11 @@
       var expensesCollection = db.collection("expenses");
       expensesCollection.load();
       
+      var from = "";
+      var to = "";
       $("#submit").on("click",function(){
         var searchMode = $("input[name='mode']:checked").val();
-        var from = "";
-        var to = "";
+
         if (searchMode=='thisMonth') {
           var date = new Date();
           var year = date.getUTCFullYear();
