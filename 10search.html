@@ -34,6 +34,17 @@
     </table>
     
     <script>
+      
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("DB");
+      var expensesCollection = db.collection("expenses");
+      expensesCollection.load();
+      var search10 = expensesCollection.find(
+        {$limit: 10},
+        {$OrderBy: -1}
+      );
+      
+      console.log(search10);
     </script>
   </body>
 <html>
