@@ -28,7 +28,7 @@
           <th class="textWhite">日期</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id=table>
       
       </tbody>
     </table>
@@ -44,6 +44,22 @@
         {$limit: 10,$OrderBy:{date:-1}}
       );
       
+      var categories={
+        餐飲:"餐飲",
+        衣物:"衣物",
+        居住:"居住",
+        交通:"交通",
+        娛樂:"娛樂",
+        學習:"學習",
+        其他:"其他"
+      };
+      
+      $("tbody").html("");
+      var count = 0;
+      for (i=0,i<10,i++){
+        $("#table").append("<tr><td> </td><td>"+categories[search10[count].categoryId-1]+"</td><td>"+search10[count].name+"</td><td>"+search10[count].amount+"</td><td>"+search10[count].date+"</td></tr>");
+        count = count + 1;
+      }
       
     </script>
   </body>
