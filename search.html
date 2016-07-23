@@ -64,23 +64,22 @@
           from = $("#from").val();
           to = $("#to").val();
         }
-      })
-      
-      var total = 0;
-      
-      var expenses = expensesCollection.find({
-        date:{
-          $gte:from,
-          $lte:to
-        }
-      },{
-        $orderBy:{date:1}
-      });
-      
-      $("tbody").html(""); //tbody 空
-      
-      if(expenses.length===0){
-          $("tbody").append("<tr><td colspan='4' style='text-align:center'>查無資料</td></tr>");
+        
+        var total = 0;
+        
+        var expenses = expensesCollection.find({
+          date:{
+            $gte:from,
+            $lte:to
+          }
+        },{
+          $orderBy:{date:1}
+        });
+        
+        $("tbody").html(""); //tbody 空
+        
+        if(expenses.length===0){
+            $("tbody").append("<tr><td colspan='4' style='text-align:center'>查無資料</td></tr>");
         } else {
           for(var i=0;i<expenses.length; i++){
             $("#expenses tbody").append("<tr><td> </td><td>"+categories[expenses[i].category]+"</td><td>"+expenses[i].name+"</td><td>"+expenses[i].amount+"</td><td>"+expenses[i].date+"</td></tr>");
@@ -89,6 +88,9 @@
           }
           $("body").append("<h1>總計: "+total+"</h1>");
         }
+        
+      });
+      
     </script>
   </body>
 </html>
