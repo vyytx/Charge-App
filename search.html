@@ -57,23 +57,13 @@
           if(month<=9){
             month = "0"+month; //2016-10-1 < 2016-1-1
           }
-          from = year+"/"+month+"/"+"01";
-          to = year+"/"+month+"/"+"31";
+          from = year+"-"+month+"-"+"01";
+          to = year+"-"+month+"-"+"31";
         } else if(searchMode=='period'){
           from = $("#from").val();
           to = $("#to").val();
         }
       }
-      
-      var categories={
-        餐飲:餐飲,
-        衣物:衣物,
-        居住:居住,
-        交通:交通,
-        娛樂:娛樂,
-        學習:學習,
-        其他:其他
-      };
       
       var total = 0;
       
@@ -92,7 +82,7 @@
           $("tbody").append("<tr><td colspan='4' style='text-align:center'>查無資料</td></tr>");
         } else {
           for(var i=0;i<expenses.length; i++){
-            $("#expenses tbody").append("<tr><td> </td><td>"+categories[expenses[i].categoryId-1]+"</td><td>"+expenses[i].name+"</td><td>"+expenses[i].amount+"</td><td>"+expenses[i].date+"</td></tr>");
+            $("#expenses tbody").append("<tr><td> </td><td>"+categories[expenses[i].category]+"</td><td>"+expenses[i].name+"</td><td>"+expenses[i].amount+"</td><td>"+expenses[i].date+"</td></tr>");
             categories[expenses[i].category] += expenses[i].amount/1;
             total += expenses[i].amount/1;
           }
