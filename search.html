@@ -60,7 +60,9 @@
       
       $("#submit").on("click",function(){
         var searchMode = $("input[name='mode']:checked").val();
-
+        
+        $("tbody").html("");
+        
         if (searchMode=='thisMonth') {
           var date = new Date();
           var year = date.getUTCFullYear();
