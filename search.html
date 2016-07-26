@@ -36,7 +36,7 @@
           <th class="textWhite">日期</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="tbody">
       </tbody>
     </table>
       
@@ -45,6 +45,11 @@
       var db = fdb.db("DB");
       var expensesCollection = db.collection("expenses");
       expensesCollection.load();
+      
+      function tbc (){
+        $(".tbody").html("");
+        $(".tbc").html("");
+      }
       
       var from = "";
       var to = "";
@@ -61,7 +66,7 @@
       $("#submit").on("click",function(){
         var searchMode = $("input[name='mode']:checked").val();
         
-        $("tbody").html("");
+        tbc();
         
         if (searchMode=='thisMonth') {
           var date = new Date();
@@ -88,17 +93,19 @@
           $orderBy:{date:1}
         });
         
-        $("tbody").html(""); //tbody 空
+        tbc(); //tbody 空
         
         if(expenses.length===0){
-            $("tbody").append("<tr><td colspan='4' class='textWhite' style='text-align:center'>查無資料</td></tr>");
+          tbc();
+          $("tbody").append("<tr><td colspan='4' class='textWhite tbc' style='text-align:center'>查無資料</td></tr>");
         } else {
+          tbc();
           for(var i=0;i<expenses.length; i++){
             $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+categories[expenses[i].category]+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td></tr>");
             categories[expenses[i].category] += expenses[i].amount/1;
             total += expenses[i].amount/1;
           }
-          $("body").append("<h1>總計: "+total+"</h1>");
+          $("body").append("<h1 class='tbc'>總計: "+total+"</h1>");
         }
         
       });
