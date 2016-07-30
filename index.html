@@ -59,11 +59,7 @@
       
       $("tbody").html("");
       
-      var count = 0;
-      for (i=0;i<1;i++){
-        $("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[count].category+"</td><td class='textWhite'>"+searchToday[count].name+"</td><td class='textWhite'>"+searchToday.amount+"</td><td class='textWhite'>"+searchToday.date+"</td></tr>");
-        count = count + 1;
-      }
+      $("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td></tr>");
     </script>
   </body>
   
