@@ -62,10 +62,23 @@
           	$OrderBy:{date:-1}
       	  }
     	  );
+    	  
+    	  function remove (){
+    	  	expensesCollection.remove(
+    	  		{},
+    	  		{
+    	  			$limit:1,
+          		$OrderBy:{date:-1}
+    	  		}
+    	  	);
+    	  	$(this).closest("tr").remove();
+    	  }
       
       	$("tbody").html("");
-      	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td></tr>");
-		
+      	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-primary remove-btn'>刪除</button></td></tr>");
+				
+				$(".remove-btn").on("click" , )
+				
       });
       
   	</script>
