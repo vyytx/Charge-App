@@ -11,7 +11,7 @@
     <script src="js/fdb.js"> </script>
   </head>
     
-  <body>
+  <body id="body">
     <br>
     <br>
     <h1 class="cen-ter">記帳のAPP</h1>
@@ -83,7 +83,7 @@
       	$("tbody").html("");
       	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-primary remove-btn'data-removeid="+searchToday[0]._id+">刪除</button></td></tr>");
 				
-				$(".remove-btn").on("click" , remove)
+				$("#body").on("click" , ".remove-btn" , remove)
 				
       });
       
