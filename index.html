@@ -26,8 +26,46 @@
     <br>
     <a href="search.html"><button class="cen-ter btn btn-default">查詢特定時間內的帳</button></a>
     <br>
-    <button class="cen-ter btn btn-default">離開 APP</button>
     <br>
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th> </th>
+          <th class="textWhite">類別</th>
+          <th class="textWhite">項目</th>
+          <th class="textWhite">金額</th> 
+          <th class="textWhite">日期</th>
+        </tr>
+      </thead>
+    	<tbody id=table>
+      
+    	</tbody>
+		</table>
+    <br>
+    
+    <script>
+      var fdb = new ForerunnerDB();
+      var db = fdb.db("DB");
+      var expensesCollection = db.collection("expenses");
+      expensesCollection.load();
+      
+      var searchToday = expensesCollection.find(
+        {},
+        {
+          $limit:1,
+          $OrderBy:{date:-1}
+        }
+      );
+      
+      $("tbody").html("");
+      
+      var count = 0;
+      for (i=0;i<10;i++){
+        $("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[count].category+"</td><td class='textWhite'>"+searchToday[count].name+"</td><td class='textWhite'>"+searchToday.amount+"</td><td class='textWhite'>"+searchToday.date+"</td></tr>");
+        count = count + 1;
+      }
+    </script>
   </body>
   
 </html>
