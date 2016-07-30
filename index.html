@@ -52,7 +52,7 @@
       var searchToday = expensesCollection.find(
         {},
         {
-          $limit:1,
+          $limit:2,
           $OrderBy:{date:-1}
         }
       );
