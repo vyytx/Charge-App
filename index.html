@@ -47,24 +47,27 @@
       var fdb = new ForerunnerDB();
       var db = fdb.db("DB");
       var expensesCollection = db.collection("expenses");
-      expensesCollection.load();
+      expensesCollection.load(function (){
+      	
+      	var searchToday = expensesCollection.find(
+        	{},
+        	{
+        		$limit:1,
+          	$OrderBy:{date:-1}
+      	  }
+    	  );
       
-      var searchToday = expensesCollection.find(
-        {},
-        {
-          $limit:1,
-          $OrderBy:{date:-1}
-        }
-      );
+      	$("tbody").html("");
       
-      $("tbody").html("");
+    		console.log(searchToday[0].category);
+      	console.log(searchToday[0].name);
+      	console.log(searchToday[0].amount);
+      	console.log(searchToday[0].date);
+      	//$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td></tr>");
+		
+      });
       
-      console.log(searchToday[0].category);
-      console.log(searchToday[0].name);
-      console.log(searchToday[0].amount);
-      console.log(searchToday[0].date);
-      //$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td></tr>");
-    </script>
+  	</script>
   </body>
   
 </html>
