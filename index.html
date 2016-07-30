@@ -41,6 +41,7 @@
           <th class="textWhite">項目</th>
           <th class="textWhite">金額</th> 
           <th class="textWhite">日期</th>
+          <th> </th>
         </tr>
       </thead>
     	<tbody id=table>
@@ -64,18 +65,13 @@
     	  );
     	  
     	  function remove (){
-    	  	expensesCollection.remove(
-    	  		{},
-    	  		{
-    	  			$limit:1,
-          		$OrderBy:{date:-1}
-    	  		}
-    	  	);
+    	  	var removeid = jQuery(".remove-btn").data('removeid');
+    	  	expensesCollection.removeById(removeid);
     	  	$(this).closest("tr").remove();
     	  }
       
       	$("tbody").html("");
-      	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-primary remove-btn'>刪除</button></td></tr>");
+      	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-primary remove-btn'data-removeid="+searchToday[0]._id+">刪除</button></td></tr>");
 				
 				$(".remove-btn").on("click" , remove)
 				
