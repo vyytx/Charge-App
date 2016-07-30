@@ -69,6 +69,15 @@
     	  	expensesCollection.removeById(removeid);
     	  	$(this).closest("tr").remove(); 
     	  	expensesCollection.save();
+    	  	var searchToday = expensesCollection.find(
+        		{},
+        		{
+        			$limit:1,
+          		$orderBy:{date:-1}
+      	  	}
+    	  	);
+    	  	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-primary remove-btn'data-removeid="+searchToday[0]._id+">刪除</button></td></tr>");
+    	  	expensesCollection.save();
     	  }
       
       	$("tbody").html("");
