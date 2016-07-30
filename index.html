@@ -68,6 +68,7 @@
     	  	var removeid = jQuery(".remove-btn").data('removeid');
     	  	expensesCollection.removeById(removeid);
     	  	$(this).closest("tr").remove(); 
+    	  	expensesCollection.save();
     	  }
       
       	$("tbody").html("");
