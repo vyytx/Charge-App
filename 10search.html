@@ -47,7 +47,10 @@
             $OrderBy:{date:-1}
           }
         );
-        
+      
+      if(search10.length===0){
+        $("tbody").append("<tr><td colspan='5' class='textWhite cen-ter tbc' style='text-align:center'>查無資料</td></tr>");
+      }else{
         function remove (){
     	  	var removeid = jQuery(".remove-btn").data('removeid');
     	  	expensesCollection.removeById(removeid);
@@ -74,11 +77,8 @@
           count = count + 1;
         }
       
-      });
-      
-      if(search10.length===0){
-        $("tbody").append("<tr><td colspan='5' class='textWhite cen-ter tbc' style='text-align:center'>查無資料</td></tr>");
       }
+    )}
       
     </script>
   </body>
