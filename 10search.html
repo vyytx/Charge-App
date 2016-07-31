@@ -64,7 +64,7 @@
             }
           );
     	  	for (i=0;i<10;i++){
-            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
+            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
             count = count + 1;
           }
     	  	expensesCollection.save();
@@ -73,10 +73,11 @@
         $("tbody").html("");
         var count = 0;
         for (i=0;i<10;i++){
-          $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
+          $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
           count = count + 1;
         }
-      
+        
+        $("#body").on("click" , ".remove-btn" , remove)
       }
     })
       
