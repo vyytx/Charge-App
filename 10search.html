@@ -27,6 +27,7 @@
           <th class="textWhite">項目</th>
           <th class="textWhite">金額</th> 
           <th class="textWhite">日期</th>
+          <th> </th>
         </tr>
       </thead>
       <tbody id=table>
@@ -47,11 +48,30 @@
             $orderBy:{date:-1}
           }
         );
+        
+        function remove (){
+    	  	var removeid = jQuery(".remove-btn").data('removeid');
+    	  	expensesCollection.removeById(removeid);
+    	  	$(this).closest("tr").remove(); 
+    	  	expensesCollection.save();
+          var search10 = expensesCollection.find(
+            {},
+            {
+              $limit:10,
+              $orderBy:{date:-1}
+            }
+          );
+    	  	for (i=0;i<10;i++){
+            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
+            count = count + 1;
+          }
+    	  	expensesCollection.save();
+    	  }
       
         $("tbody").html("");
         var count = 0;
         for (i=0;i<10;i++){
-          $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td></tr>");
+          $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='remove-btn' data-removeid="+search10[count]._id+"></button></td></tr>");
           count = count + 1;
         }
       
