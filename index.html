@@ -31,9 +31,7 @@
     <button class="cen-ter btn btn-default">離開APP</button>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
+    <Version></Version>
     <br>
     <br>
     <table class="table">
@@ -54,6 +52,8 @@
     <br>
     
     <script>
+    	var version = "V 2.2.4b"
+    	$("Version").append(version);
       var fdb = new ForerunnerDB();
       var db = fdb.db("DB");
       var expensesCollection = db.collection("expenses");
