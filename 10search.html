@@ -10,7 +10,7 @@
     <script src="js/fdb.js"> </script>
   </head>
   
-  <body>
+  <body ="body">
     <br>
     <br>
     <h1 class="cen-ter">最近十筆的帳</h1>
@@ -47,10 +47,7 @@
             $orderBy:{date:-1}
           }
         );
-      
-      if(search10.length===0){
-        $("body").append("<h1 class='cen-ter textWhite'>查無資料</h1>");
-      }else{
+        
         function remove (){
     	  	var removeid = jQuery(".remove-btn").data('removeid');
     	  	expensesCollection.removeById(removeid);
@@ -70,16 +67,21 @@
     	  	expensesCollection.save();
     	  }
       
-        $("tbody").html("");
-        var count = 0;
-        for (i=0;i<10;i++){
-          $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
-          count = count + 1;
-        }
+        if(search10.length===0){
+          $("tbody").html("");
+          $("body").append("<h1 class='cen-ter textWhite'>查無資料</h1>");
+        }else{
+      
+          $("tbody").html("");
+          var count = 0;
+          for (i=0;i<10;i++){
+            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
+            count = count + 1;
+          }
         
-        $("body").on("click" , ".remove-btn" , remove)
-      }
-    })
+          $("#body").on("click" , ".remove-btn" , remove())
+        }
+      })
       
     </script>
   </body>
