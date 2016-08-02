@@ -40,6 +40,7 @@
       var db = fdb.db("DB");
       var expensesCollection = db.collection("expenses");
       expensesCollection.load( function(){
+        
         var search10 = expensesCollection.find(
           {},
           {
@@ -60,21 +61,20 @@
               $orderBy:{date:-1}
             }
           );
-    	  	for (i=0;i<10;i++){
+    	  	for (i=0;i<9;i++){
             $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
             count = count + 1;
           }
     	  	expensesCollection.save();
     	  }
-      
+        
         if(search10.length===0){
           $("tbody").html("");
           $("body").append("<h1 class='cen-ter textWhite'>查無資料</h1>");
         }else{
-      
           $("tbody").html("");
           var count = 0;
-          for (i=0;i<10;i++){
+          for (i=0;i<9;i++){
             $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
             count = count + 1;
           }
