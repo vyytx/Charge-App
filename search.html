@@ -124,15 +124,14 @@
             date:{
               $gte:from,
               $lte:to
-            },
-            category:{
-              $gte:"餐飲",
-              $lte:"餐飲"
-          },
+            }
+          },{
             $orderBy:{date:1}
           });
           for(var i =0;i<expenses.length;i++){
-            eat1 = eat1 + expenses[i].amount/1;
+            if(expenses[i].category=="餐飲"){
+              eat1 = eat1 + expenses[i].amount/1;
+            }
           }
           $(".c_eat").append("<td class='textWhite'>餐飲</td><td class='textWhite'>"+eat1+"</td>");
         }
