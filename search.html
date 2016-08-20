@@ -53,12 +53,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr id="c_eat"><td class="textWhite">餐飲</td></tr>
-        <tr><td class="textWhite">>衣物</td></tr>
-        <tr><td class="textWhite">>居住</td></tr>
-        <tr><td class="textWhite">>交通</td></tr>
-        <tr><td class="textWhite">>娛樂</td></tr>
-        <tr><td class="textWhite">>其他</td></tr>
+        <tr id="c_eat"></tr>
+        <tr><td class="textWhite">衣物</td></tr>
+        <tr><td class="textWhite">居住</td></tr>
+        <tr><td class="textWhite">交通</td></tr>
+        <tr><td class="textWhite">娛樂</td></tr>
+        <tr><td class="textWhite">其他</td></tr>
       </tbody>
     </table>
     
@@ -135,7 +135,7 @@
           for(var i =0;i<expenses.length;i++){
             eat1 = eat1 + expenses[i].amount/1;
           }
-          $(".c_eat").append("<td></td class='textWhite'>"eat1"<td></td>");
+          $(".c_eat").append("<td class='textWhite'>餐飲</td><td class='textWhite'>"+eat1+"</td>");
         }
         
       });
