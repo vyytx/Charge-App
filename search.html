@@ -45,7 +45,6 @@
     <table class="table ex-t2">
       <thead>
         <tr>
-          <th> </th>
           <th class="textWhite">類別</th>
           <th class="textWhite">金額</th>
           <th class="textWhite">比例</th>
@@ -53,11 +52,11 @@
       </thead>
       <tbody>
         <tr id="c_eat"></tr>
-        <tr><td class="textWhite">衣物</td></tr>
-        <tr><td class="textWhite">居住</td></tr>
-        <tr><td class="textWhite">交通</td></tr>
-        <tr><td class="textWhite">娛樂</td></tr>
-        <tr><td class="textWhite">其他</td></tr>
+        <tr id="c_cloth"></tr>
+        <tr id="c_live"></tr>
+        <tr id="c_go"></tr>
+        <tr id="c_play"></tr>
+        <tr id="c_other"></tr>
       </tbody>
     </table>
     
@@ -96,6 +95,13 @@
         
         var total = 0;
         
+        var eat1 = 0;
+        var clo1 = 0;
+        var liv1 = 0;
+        var goo1 = 0;
+        var pla1 = 0;
+        var oth1 = 0;
+        
         var expenses = expensesCollection.find({
           date:{
             $gte:from,
@@ -118,8 +124,8 @@
             total += expenses[i].amount/1;
           }
           $("body").append("<h1 class='tbc'>總計: "+total+"</h1>");
+          
           //eat
-          var eat1 = 0;
           expenses = expensesCollection.find({
             date:{
               $gte:from,
@@ -134,6 +140,87 @@
             }
           }
           $(".c_eat").append("<td class='textWhite'>餐飲</td><td class='textWhite'>"+eat1+"</td>");
+          
+          //cloth
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;i<expenses.length;i++){
+            if(expenses[i].category=="衣物"){
+              clo1 = clo1 + expenses[i].amount/1;
+            }
+          }
+          $(".c_cloth").append("<td class='textWhite'>衣物</td><td class='textWhite'>"+clo1+"</td>");
+          
+          //live
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;i<expenses.length;i++){
+            if(expenses[i].category=="居住"){
+              liv1 = liv1 + expenses[i].amount/1;
+            }
+          }
+          $(".c_live").append("<td class='textWhite'>居住</td><td class='textWhite'>"+liv1+"</td>");
+          
+          //go
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;i<expenses.length;i++){
+            if(expenses[i].category=="交通"){
+              goo1 = goo1 + expenses[i].amount/1;
+            }
+          }
+          $(".c_go").append("<td class='textWhite'>交通</td><td class='textWhite'>"+goo1+"</td>");
+          
+          //play
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;i<expenses.length;i++){
+            if(expenses[i].category=="娛樂"){
+              pla1 = pla1 + expenses[i].amount/1;
+            }
+          }
+          $(".c_play").append("<td class='textWhite'>娛樂</td><td class='textWhite'>"+pla1+"</td>");
+          
+          //other
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            }
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;i<expenses.length;i++){
+            if(expenses[i].category=="其他"){
+              pla1 = pla1 + expenses[i].amount/1;
+            }
+          }
+          $(".c_other").append("<td class='textWhite'>其他</td><td class='textWhite'>"+oth1+"</td>");
+          
         }
         
       });
