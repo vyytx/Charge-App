@@ -26,7 +26,7 @@
     <input id="from" class="input-field" type="date"><text class="textWhite"> ~ </text><input id="to" class="input-field" type="date">
     <button id="submit" class="btn btn-primary center">查詢</button>
     <hr>
-    <table id="categories" class="table ex-t">
+    <table class="table ex-t">
       <thead>
         <tr>
           <th> </th>
@@ -39,7 +39,29 @@
       <tbody class="tbody">
       </tbody>
     </table>
-      
+    <br>
+    <hr>
+    <br>
+    
+    <table class="table ex-t2">
+      <thead>
+        <tr>
+          <th> </th>
+          <th class="textWhite">類別</th>
+          <th class="textWhite">金額</th>
+          <th class="textWhite">比例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="c_eat"><td class="textWhite">餐飲</td></tr>
+        <tr><td class="textWhite">>衣物</td></tr>
+        <tr><td class="textWhite">>居住</td></tr>
+        <tr><td class="textWhite">>交通</td></tr>
+        <tr><td class="textWhite">>娛樂</td></tr>
+        <tr><td class="textWhite">>其他</td></tr>
+      </tbody>
+    </table>
+    
     <script>
       var fdb = new ForerunnerDB();
       var db = fdb.db("DB");
@@ -91,12 +113,29 @@
           $("tbody").append("<tr><td colspan='4' class='textWhite tbc' style='text-align:center'>查無資料</td></tr>");
         } else {
           tbc();
-          for(var i=0;i<expenses.length; i++){
+          for(var i=0;i<expenses.length;i++){
             $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td></tr>");
             categories[expenses[i].category] += expenses[i].amount/1;
             total += expenses[i].amount/1;
           }
           $("body").append("<h1 class='tbc'>總計: "+total+"</h1>");
+          //eat
+          var eat1 = 0;
+          expenses = expensesCollection.find({
+            date:{
+              $gte:from,
+              $lte:to
+            },
+            category:{
+              $gte:"餐飲",
+              $lte:"餐飲"
+          },{
+            $orderBy:{date:1}
+          });
+          for(var i =0;<expenses.length;i++){
+            eat1 = eat1 + expenses[i].amount/1;
+          }
+          $(".c_eat").append("<td></td class='textWhite'>"eat1"<td></td>");
         }
         
       });
