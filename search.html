@@ -114,7 +114,7 @@
           tbc();
           for(var i=0;i<expenses.length;i++){
             $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td></tr>");
-            categories[expenses[i].category] += expenses[i].amount/1;
+            //categories[expenses[i].category] += expenses[i].amount/1;
             total += expenses[i].amount/1;
           }
           $("body").append("<h1 class='tbc'>總計: "+total+"</h1>");
