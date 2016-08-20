@@ -139,7 +139,7 @@
               eat1 = eat1 + expenses[i].amount/1;
             }
           }
-          $("#c_eat").append("<td class='textWhite'>餐飲</td><td class='textWhite'>"+eat1+"</td>");
+          $("#c_eat").append("<td class='textWhite'>餐飲</td><td class='textWhite'>"+eat1+"</td><td class='textWhite'>"+eat1/100+"%</td>");
           
           //cloth
           expenses = expensesCollection.find({
@@ -155,7 +155,7 @@
               clo1 = clo1 + expenses[i].amount/1;
             }
           }
-          $("#c_cloth").append("<td class='textWhite'>衣物</td><td class='textWhite'>"+clo1+"</td><td class='textWhite'>"+clo1/100+"#</td>");
+          $("#c_cloth").append("<td class='textWhite'>衣物</td><td class='textWhite'>"+clo1+"</td><td class='textWhite'>"+clo1/100+"%</td>");
           
           //live
           expenses = expensesCollection.find({
@@ -171,7 +171,7 @@
               liv1 = liv1 + expenses[i].amount/1;
             }
           }
-          $("#c_live").append("<td class='textWhite'>居住</td><td class='textWhite'>"+liv1+"</td>");
+          $("#c_live").append("<td class='textWhite'>居住</td><td class='textWhite'>"+liv1+"</td><td class='textWhite'>"+liv/100+"%</td>");
           
           //go
           expenses = expensesCollection.find({
@@ -187,7 +187,7 @@
               goo1 = goo1 + expenses[i].amount/1;
             }
           }
-          $("#c_go").append("<td class='textWhite'>交通</td><td class='textWhite'>"+goo1+"</td>");
+          $("#c_go").append("<td class='textWhite'>交通</td><td class='textWhite'>"+goo1+"</td><td class='textWhite'>"+goo1/100+"%</td>");
           
           //play
           expenses = expensesCollection.find({
@@ -203,7 +203,7 @@
               pla1 = pla1 + expenses[i].amount/1;
             }
           }
-          $("#c_play").append("<td class='textWhite'>娛樂</td><td class='textWhite'>"+pla1+"</td>");
+          $("#c_play").append("<td class='textWhite'>娛樂</td><td class='textWhite'>"+pla1+"</td><td class='textWhite'>"+pla1/100+"%</td>");
           
           //other
           expenses = expensesCollection.find({
@@ -219,7 +219,7 @@
               pla1 = pla1 + expenses[i].amount/1;
             }
           }
-          $("#c_other").append("<td class='textWhite'>其他</td><td class='textWhite'>"+oth1+"</td>");
+          $("#c_other").append("<td class='textWhite'>其他</td><td class='textWhite'>"+oth1+"</td><td class='textWhite'>"+oth1/100+"%</td>");
           
         }
         
