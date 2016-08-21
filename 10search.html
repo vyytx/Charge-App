@@ -59,6 +59,7 @@
               $orderBy:{date:-1}
             }
           );
+          count = 0;
     	  	for (i=0;i<search10.length;i++){
             $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
             count = count + 1;
