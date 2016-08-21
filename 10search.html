@@ -61,8 +61,7 @@
           );
           
     	  	for (i=0;i<1;i++){
-            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[count].category+"</td><td class='textWhite'>"+search10[count].name+"</td><td class='textWhite'>"+search10[count].amount+"</td><td class='textWhite'>"+search10[count].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
-            count = count + 1;
+            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[(search10.length)-1].category+"</td><td class='textWhite'>"+search10[(search10.length)-1].name+"</td><td class='textWhite'>"+search10[(search10.length)-1].amount+"</td><td class='textWhite'>"+search10[(search10.length)-1].date+"</td><td><button class='btn btn-primary remove-btn' data-removeid="+search10[(search10.length)-1]._id+">刪除</button></td></tr>");
           }
     	  	expensesCollection.save();
     	  }
