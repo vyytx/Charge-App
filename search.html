@@ -68,6 +68,13 @@
       function tbc (){
         $(".tbody").html("");
         $(".tbc").html("");
+        
+        $("#c_eat").html("");
+        $("#c_cloth").html("");
+        $("#c_live").html("");
+        $("#c_go").html("");
+        $("#c_play").html("");
+        $("#c_other").html("");
       }
       
       var from = "";
@@ -215,7 +222,7 @@
           });
           for(var i =0;i<expenses.length;i++){
             if(expenses[i].category=="其他"){
-              pla1 = pla1 + expenses[i].amount/1;
+              oth1 = oth1 + expenses[i].amount/1;
             }
           }
           $("#c_other").append("<td class='textWhite'>其他</td><td class='textWhite'>"+oth1+"</td><td class='textWhite'>"+oth1/total*100+"%</td>");
