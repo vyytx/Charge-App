@@ -24,7 +24,7 @@
     <br>
     <a href="search.html"><button class="cen-ter btn btn-default">查詢特定時間內的帳</button></a>
     <br>
-    <button onclick="self.close()" class="cen-ter btn btn-default">離開APP</button>
+    <button onclick="navigator.app.exitApp();" class="cen-ter btn btn-default">離開APP</button>
     <br>
     <br>
     <Version class="textWhite cen-ter"></Version>
@@ -48,6 +48,7 @@
     <br>
     
     <script>
+    	document.addEventListener("deviceready", onDeviceReady, true);
     	$(".table").hide();
     	var version = "V 2.2.4b"
     	$("Version").append(version);
@@ -76,9 +77,13 @@
           		$orderBy:{date:-1}
       	  	}
     	  	);
-    	  	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-danger btn-sm remove-btn'data-removeid="+searchToday[0]._id+">刪除</button></td></tr>");
-    	  	expensesCollection.save();
-    	  	$(".table").show();
+    	  	if(searchToday.length !== 0){
+		      	$("#table").append("<tr><td> </td><td class='textWhite'>"+searchToday[0].category+"</td><td class='textWhite'>"+searchToday[0].name+"</td><td class='textWhite'>"+searchToday[0].amount+"</td><td class='textWhite'>"+searchToday[0].date+"</td><td><button class='btn btn-danger btn-sm remove-btn'data-removeid="+searchToday[0]._id+">刪除</button></td></tr>");
+		      	expensesCollection.save();
+		      	$(".table").show();
+    	  	}else{
+    	  		$(".table").hide();
+    	  	}
     	  }
       
       	$("tbody").html("");
