@@ -58,7 +58,7 @@
         );
         
         function remove (){
-    	  	var removeid = jQuery(".remove-btn").data('removeid');
+    	  	var removeid = $(this).data('removeid');
     	  	expensesCollection.removeById(removeid);
     	  	$(this).closest("tr").remove(); 
     	  	expensesCollection.save();
