@@ -19,3 +19,7 @@ p{
 .textWhite{
   color: white;
 }
+
+#modal{
+  top:30%;
+}
