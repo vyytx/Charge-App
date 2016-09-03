@@ -40,6 +40,7 @@
           name:"牛排",
           amount:688
         })
+        expensesCollection.save();
       }
       
       $(".table").hide();
@@ -70,7 +71,7 @@
           );
           
     	  	for (i=0;i<1;i++){
-            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[(search10.length)-1].category+"</td><td class='textWhite'>"+search10[(search10.length)-1].name+"</td><td class='textWhite'>"+search10[(search10.length)-1].amount+"</td><td class='textWhite'>"+search10[(search10.length)-1].date+"</td><td><a href='10search.html'><button class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[(search10.length)-1]._id+">刪除</button></a></td></tr>");
+            $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[(search10.length)-1].category+"</td><td class='textWhite'>"+search10[(search10.length)-1].name+"</td><td class='textWhite'>"+search10[(search10.length)-1].amount+"</td><td class='textWhite'>"+search10[(search10.length)-1].date+"</td><td><button onclick="settimeout("250") window.location('10search.html')" class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[(search10.length)-1]._id+">刪除</button></td></tr>");
           }
     	  	expensesCollection.save();
     	  	$(".table").show();
