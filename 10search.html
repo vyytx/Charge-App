@@ -64,20 +64,6 @@
     	  	expensesCollection.save(function(){
     	  	  location.reload();
     	  	});
-    	  	
-          // var search10 = expensesCollection.find(
-          //   {},
-          //   {
-          //     $limit:10,
-          //     $orderBy:{date:-1}
-          //   }
-          // );
-          
-    	  	// for (i=0;i<1;i++){
-        //     $("#table").append("<tr><td> </td><td class='textWhite'>"+search10[(search10.length)-1].category+"</td><td class='textWhite'>"+search10[(search10.length)-1].name+"</td><td class='textWhite'>"+search10[(search10.length)-1].amount+"</td><td class='textWhite'>"+search10[(search10.length)-1].date+"</td><td><button class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[(search10.length)-1]._id+">刪除</button></td></tr>");
-        //   }
-    	  	// expensesCollection.save();
-    	  	// $(".table").show();
     	  }
         
         if(search10.length===0){
