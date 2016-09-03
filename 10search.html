@@ -46,6 +46,15 @@
           }
         );
         
+        function nottrue(){
+          expensesCollection.insert({
+            date:"2016/09/03"
+            category:"餐飲"
+            name:"牛排"
+            amount:688
+          })
+        }
+        
         function remove (){
     	  	var removeid = jQuery(".remove-btn").data('removeid');
     	  	expensesCollection.removeById(removeid);
