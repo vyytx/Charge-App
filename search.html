@@ -10,7 +10,7 @@
     <script src="js/fdb.js"> </script>
   </head>
   
-  <body>
+  <body id="body">
     <br>
     <br>
     <h1 class="cen-ter">查詢特定時間內的帳</h1>
@@ -31,6 +31,7 @@
           <th class="textWhite">項目</th>
           <th class="textWhite">金額</th>
           <th class="textWhite">日期</th>
+          <th> </th>
         </tr>
       </thead>
       <tbody class="tbody">
@@ -129,7 +130,7 @@
           tbc();
           $(".table").show();
           for(var i=0;i<expenses.length;i++){
-            $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td></tr>");
+            $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td><td><button class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
             //categories[expenses[i].category] += expenses[i].amount/1;
             total += expenses[i].amount/1;
           }
@@ -233,6 +234,16 @@
           
         }
         
+        function remove (){
+    	  	var removeid = $(this).data('removeid');
+    	  	expensesCollection.removeById(removeid);
+    	  	// $(this).closest("tr").remove(); 
+    	  	expensesCollection.save(function(){
+    	  	  location.reload();
+    	  	});
+    	  }
+        
+        $("#body").on("click" , ".remove-btn" , remove)
       });
       
     </script>
