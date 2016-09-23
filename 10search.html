@@ -63,7 +63,7 @@
           
           $("tbody").html("");
           
-          search10 = expensesCollection.find({}, {$limit:10, $orderBy:{date:-1}}));
+          search10 = expensesCollection.find({}, {$limit:10, $orderBy:{date:-1}}););
           
           if(search10.length===0){
             $("tbody").html("");
