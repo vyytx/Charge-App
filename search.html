@@ -63,9 +63,6 @@
       var fdb = new ForerunnerDB();
       var db = fdb.db("DB");
       var expensesCollection = db.collection("expenses");
-      expensesCollection.load();
-      
-      $("#choose").click();
       
       function tbc (){
         $(".tbody").html("");
@@ -79,7 +76,20 @@
         $("#c_other").html("");
       }
       
-      var from = "";
+      function remove (){
+    	 	var removeid = $(this).data('removeid');
+    	 	expensesCollection.removeById(removeid);
+    	 	// $(this).closest("tr").remove(); 
+    	 	expensesCollection.save(function(){
+    	 	  location.reload();
+    	 	});
+    	}
+      
+      $("#choose").click();
+      
+      expensesCollection.load({
+        
+        var from = "";
       var to = "";
       
       $("#submit").on("click",function(){
@@ -234,16 +244,9 @@
           
         }
         
-        function remove (){
-    	  	var removeid = $(this).data('removeid');
-    	  	expensesCollection.removeById(removeid);
-    	  	// $(this).closest("tr").remove(); 
-    	  	expensesCollection.save(function(){
-    	  	  location.reload();
-    	  	});
-    	  }
-        
         $("#body").on("click" , ".remove-btn" , remove)
+      });
+        
       });
       
     </script>
