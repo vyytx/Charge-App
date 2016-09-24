@@ -25,7 +25,7 @@
 			<br>
 			<div class="row" style="margin-bottom:10px">
 	   		<div class="col-xs-3">金額:</div>
-	   		<div class="col-xs-9"><input class="input-field form-control input-sm" id="amount" type="number" /></div>
+	   		<div class="col-xs-9"><input class="input-field form-control input-sm" id="amount" type="number" placeholder="100" /></div>
 	  	</div>
 	  	<br>
 			<div class="row" style="margin-bottom:10px">
@@ -76,7 +76,7 @@
         $("#date").val(today);
         $("#category").val("c");
         $("#name").val("");
-        $("#amount").val("100");
+        $("#amount").val("");
       
       $("#submit").on("click",function(){
         expensesCollection.insert({
