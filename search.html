@@ -140,7 +140,7 @@
             tbc();
             $(".table").show();
             for(var i=0;i<expenses.length;i++){
-              $(".ex-t").append("<tr><td> </td><td class='textWhite'>"+expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>"+expenses[i].amount+"</td><td class='textWhite'>"+expenses[i].date+"</td><td><button class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
+              $(".ex-t").append("<tr><td> </td><td class='textWhite'>" + expenses[i].category+"</td><td class='textWhite'>"+expenses[i].name+"</td><td class='textWhite'>" + expenses[i].amount + "</td><td class='textWhite'>"+expenses[i].date+"</td><td><button class='btn btn-danger remove-btn btn-sm' data-removeid="+search10[count]._id+">刪除</button></td></tr>");
               //categories[expenses[i].category] += expenses[i].amount/1;
               total += expenses[i].amount/1;
             }
